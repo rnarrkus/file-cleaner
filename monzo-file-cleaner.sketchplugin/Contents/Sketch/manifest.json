@@ -8,29 +8,45 @@
       "description": "Check that Monzo conventions are being followed 🤓",
       "identifier": "monzo.validate",
       "script": "validate.js",
-      "shortcut": "ctrl shift m"
-    },
-    {
-      "name": "🧙‍♀️ Validate and fix",
-      "description": "Apply Monzo conventions automatically 🧙‍♀️",
-      "identifier": "monzo.validate-and-fix",
-      "script": "validate-and-fix.js",
       "shortcut": "ctrl shift l"
     },
     {
-      "name": "🧙‍♀️ Validate and fix big",
+      "name": "🧙‍♀️ Validate and fix mobile",
       "description": "Apply Monzo conventions automatically 🧙‍♀️",
-      "identifier": "monzo.validate-and-fix-big",
-      "script": "validate-and-fix-big.js",
-      "shortcut": "ctrl shift k"
+      "identifier": "monzo.validate-and-fix-mobile",
+      "script": "validate-and-fix-mobile.js",
+      "shortcut": "ctrl shift m"
+    },
+    {
+      "name": "🧙‍♀️ Validate and fix tablet",
+      "description": "Apply Monzo conventions automatically 🧙‍♀️",
+      "identifier": "monzo.validate-and-fix-tablet",
+      "script": "validate-and-fix-tablet.js",
+      "shortcut": "ctrl shift t"
+    },
+    {
+      "name": "🧙‍♀️ Validate and fix desktop",
+      "description": "Apply Monzo conventions automatically 🧙‍♀️",
+      "identifier": "monzo.validate-and-fix-desktop",
+      "script": "validate-and-fix-desktop.js",
+      "shortcut": "ctrl shift t"
+    },
+    {
+      "name": "🧙‍♀️ Validate and fix vr",
+      "description": "Apply Monzo conventions automatically 🧙‍♀️",
+      "identifier": "monzo.validate-and-fix-vr",
+      "script": "validate-and-fix-vr.js",
+      "shortcut": "ctrl shift t"
     }
   ],
   "menu": {
     "title": "🏦 Monzo",
     "items": [
       "monzo.validate",
-      "monzo.validate-and-fix",
-      "monzo.validate-and-fix-big"
+      "monzo.validate-and-fix-mobile",
+      "monzo.validate-and-fix-tablet",
+      "monzo.validate-and-fix-desktop",
+      "monzo.validate-and-fix-vr"
     ]
   },
   "version": "1.0.0",
