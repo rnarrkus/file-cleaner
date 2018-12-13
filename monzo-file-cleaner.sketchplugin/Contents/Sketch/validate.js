@@ -110,7 +110,7 @@ function validate(context, hideSuccess) {
   var result = Object(_validators__WEBPACK_IMPORTED_MODULE_1__["validateAll"])(context);
 
   if (result.success) {
-    sketch_ui__WEBPACK_IMPORTED_MODULE_0___default.a.message("\uD83D\uDE0D Looks good");
+    sketch_ui__WEBPACK_IMPORTED_MODULE_0___default.a.message("\uD83D\uDE0D Looks good!");
   } else {
     sketch_ui__WEBPACK_IMPORTED_MODULE_0___default.a.message("\u203C\uFE0F ".concat(result.message));
   }

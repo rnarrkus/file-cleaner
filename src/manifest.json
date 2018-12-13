@@ -16,10 +16,17 @@
       "identifier": "monzo.validate-and-fix",
       "script": "./cmd/validate-and-fix.js",
       "shortcut": "ctrl shift l"
+    },
+    {
+      "name": "🧙‍♀️ Validate and fix big",
+      "description": "Apply Monzo conventions automatically 🧙‍♀️",
+      "identifier": "monzo.validate-and-fix-big",
+      "script": "./cmd/validate-and-fix-big.js",
+      "shortcut": "ctrl shift k"
     }
   ],
   "menu": {
     "title": "🏦 Monzo",
-    "items": ["monzo.validate", "monzo.validate-and-fix"]
+    "items": ["monzo.validate", "monzo.validate-and-fix", "monzo.validate-and-fix-big"]
   }
 }

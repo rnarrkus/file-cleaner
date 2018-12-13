@@ -95,7 +95,7 @@ var exports =
 /*!**************************!*\
   !*** ./src/artboards.js ***!
   \**************************/
-/*! exports provided: artboardsByName, artboardRowsByName, artboardRowsByPosition, autoAlignArtboards */
+/*! exports provided: artboardsByName, artboardRowsByName, artboardRowsByPosition, autoAlignArtboards, autoAlignArtboardsBig */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -104,6 +104,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "artboardRowsByName", function() { return artboardRowsByName; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "artboardRowsByPosition", function() { return artboardRowsByPosition; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "autoAlignArtboards", function() { return autoAlignArtboards; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "autoAlignArtboardsBig", function() { return autoAlignArtboardsBig; });
 /* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./utils */ "./src/utils.js");
 /* harmony import */ var _validators__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./validators */ "./src/validators.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
@@ -306,6 +307,86 @@ function autoAlignArtboards(page) {
     } finally {
       if (_didIteratorError2) {
         throw _iteratorError2;
+      }
+    }
+  }
+}
+function autoAlignArtboardsBig(page) {
+  var rows = artboardRowsByPosition(page);
+  var rowNames = Object.keys(rows).sort(function (a, b) {
+    return parseInt(a, 10) - parseInt(b, 10);
+  });
+  var y = 0;
+  var _iteratorNormalCompletion4 = true;
+  var _didIteratorError4 = false;
+  var _iteratorError4 = undefined;
+
+  try {
+    for (var _iterator4 = rowNames[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
+      var rowName = _step4.value;
+      var row = rows[rowName];
+      var x = 0;
+      var nextYOffset = 1000;
+      var sequenceNumber = 0;
+      var _iteratorNormalCompletion5 = true;
+      var _didIteratorError5 = false;
+      var _iteratorError5 = undefined;
+
+      try {
+        for (var _iterator5 = row[Symbol.iterator](), _step5; !(_iteratorNormalCompletion5 = (_step5 = _iterator5.next()).done); _iteratorNormalCompletion5 = true) {
+          var artboard = _step5.value;
+          // Make sure they're in the right order, so the list on the left is sorted
+          var parent = artboard.parentGroup();
+          artboard.removeFromParent();
+          parent.insertLayer_atIndex(artboard, 0); // Update name
+
+          var artboardNumber = parseInt(rowName, 10) + sequenceNumber;
+          artboard.name = artboardNumber.toString(); // Update artboard's position
+          // artboard.frame().{x,y}() isn't always relatively to (0,0), and using
+          // absoluteRect.ruler{X,Y} seems to solve this
+
+          artboard.absoluteRect().rulerX = x;
+          artboard.absoluteRect().rulerY = y; // Use the height of the largest artboard on this row to determine the
+          // y-offset of the next row (plus a small buffer for labels)
+
+          var height = artboard.frame().height() + 100;
+
+          if (height > nextYOffset) {
+            // Snap to a 2000 unit grid
+            nextYOffset = height + (1640 - height % 1640);
+          }
+
+          x += 1640;
+          sequenceNumber++;
+        }
+      } catch (err) {
+        _didIteratorError5 = true;
+        _iteratorError5 = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion5 && _iterator5.return != null) {
+            _iterator5.return();
+          }
+        } finally {
+          if (_didIteratorError5) {
+            throw _iteratorError5;
+          }
+        }
+      }
+
+      y += nextYOffset;
+    }
+  } catch (err) {
+    _didIteratorError4 = true;
+    _iteratorError4 = err;
+  } finally {
+    try {
+      if (!_iteratorNormalCompletion4 && _iterator4.return != null) {
+        _iterator4.return();
+      }
+    } finally {
+      if (_didIteratorError4) {
+        throw _iteratorError4;
       }
     }
   }
