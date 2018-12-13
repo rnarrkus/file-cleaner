@@ -29,14 +29,14 @@
       "description": "Apply Monzo conventions automatically 🧙‍♀️",
       "identifier": "monzo.validate-and-fix-desktop",
       "script": "validate-and-fix-desktop.js",
-      "shortcut": "ctrl shift t"
+      "shortcut": "ctrl shift d"
     },
     {
       "name": "🧙‍♀️ Validate and fix vr",
       "description": "Apply Monzo conventions automatically 🧙‍♀️",
       "identifier": "monzo.validate-and-fix-vr",
       "script": "validate-and-fix-vr.js",
-      "shortcut": "ctrl shift t"
+      "shortcut": "ctrl shift r"
     }
   ],
   "menu": {
